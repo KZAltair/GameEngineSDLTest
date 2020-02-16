@@ -4,6 +4,7 @@
 #include <SDL_ttf.h>
 #include <memory>
 #include <glm.hpp>
+#include "EntityManager.h"
 
 #pragma comment(lib, "SDL2.lib")
 #pragma comment(lib, "SDL2main.lib")
@@ -18,6 +19,7 @@ public:
 	~Game();
 	bool IsRunning() const;
 	void Initialize(int width, int height);
+	void LoadLevel(int levelNumber);
 	void Update();
 	void ProcessInput();
 	void Render();
@@ -25,9 +27,6 @@ public:
 private:
 	SDL_Window* window;
 	bool isRunning;
-	glm::vec2 pos = { 100.0f, 100.0f };
-	glm::vec2 vel = { 0.0f, 0.0f };
-	float speed = 20.0f;
 	float ticksLastFrame = 0.0f;
 
 public:

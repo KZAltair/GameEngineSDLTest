@@ -1,6 +1,9 @@
 #include "Game.h"
 #include <iostream>
 
+EntityManager manager;
+SDL_Renderer* Game::renderer;
+
 Game::Game()
 {
 	isRunning = false;
@@ -47,6 +50,10 @@ void Game::Initialize(int width, int height)
 	return;
 }
 
+void Game::LoadLevel(int levelNumber)
+{
+}
+
 void Game::Update()
 {
 	while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticksLastFrame + FrameTarget));
@@ -56,7 +63,9 @@ void Game::Update()
 	dt = (dt > 0.05f) ? 0.05f : dt;
 
 	ticksLastFrame = SDL_GetTicks();
-	pos += vel * dt;
+
+	//Here call manager.Update to update entities
+	//Code here
 }
 
 void Game::ProcessInput()
@@ -79,11 +88,9 @@ void Game::ProcessInput()
 			}
 			if (event.key.keysym.sym == SDLK_LEFT)
 			{
-				vel.x = -speed;
 			}
 			if (event.key.keysym.sym == SDLK_RIGHT)
 			{
-				vel.x = speed;
 			}
 			break;
 		}
@@ -99,9 +106,9 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //Set background color
 	SDL_RenderClear(renderer);
 
-	SDL_Rect test{ (int)pos.x, (int)pos.y, 10, 10 };
-	SDL_SetRenderDrawColor(renderer, 100, 100, 0, 255);
-	SDL_RenderFillRect(renderer, &test);
+	//Here call manager.Render()
+	//Code goes here
+
 	SDL_RenderPresent(renderer); //Swapping buffers and present them on the screen
 }
 

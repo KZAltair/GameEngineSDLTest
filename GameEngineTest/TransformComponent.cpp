@@ -1,4 +1,5 @@
 #include "TransformComponent.h"
+#include "Game.h"
 
 TransformComponent::TransformComponent(int posX, int posY, int velX, int velY, int width, int height, int scale)
 	:
@@ -16,6 +17,7 @@ void TransformComponent::Initialize()
 
 void TransformComponent::Update(float dt)
 {
+	pos += vel * dt;
 }
 
 void TransformComponent::Render()
@@ -26,4 +28,6 @@ void TransformComponent::Render()
 		width,
 		height
 	};
+	SDL_SetRenderDrawColor(Game::renderer, 255, 255, 0, 255);
+	SDL_RenderFillRect(Game::renderer, &transformRect);
 }
