@@ -56,7 +56,7 @@ void Game::Update()
 	dt = (dt > 0.05f) ? 0.05f : dt;
 
 	ticksLastFrame = SDL_GetTicks();
-	movX += speed * dt;
+	pos += vel * dt;
 }
 
 void Game::ProcessInput()
@@ -79,11 +79,11 @@ void Game::ProcessInput()
 			}
 			if (event.key.keysym.sym == SDLK_LEFT)
 			{
-				speed *= -1.0f;
+				vel.x = -speed;
 			}
 			if (event.key.keysym.sym == SDLK_RIGHT)
 			{
-				speed *= -1.0f;
+				vel.x = speed;
 			}
 			break;
 		}
@@ -99,7 +99,7 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //Set background color
 	SDL_RenderClear(renderer);
 
-	SDL_Rect test{ (int)movX, 200, 10, 10 };
+	SDL_Rect test{ (int)pos.x, (int)pos.y, 10, 10 };
 	SDL_SetRenderDrawColor(renderer, 100, 100, 0, 255);
 	SDL_RenderFillRect(renderer, &test);
 	SDL_RenderPresent(renderer); //Swapping buffers and present them on the screen

@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <memory>
+#include <glm.hpp>
 
 #pragma comment(lib, "SDL2.lib")
 #pragma comment(lib, "SDL2main.lib")
@@ -25,9 +26,9 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	bool isRunning;
-	float movX;
-	float movY;
-	float speed = 1.0f;
+	glm::vec2 pos = { 100.0f, 100.0f };
+	glm::vec2 vel = { 0.0f, 0.0f };
+	float speed = 20.0f;
 	float ticksLastFrame = 0.0f;
 
 public:
