@@ -1,14 +1,19 @@
-#include <Windows.h>
+#include "Game.h"
 
-int CALLBACK WinMain(
-    HINSTANCE hInstance,
-    HINSTANCE hPrevInstance,
-    LPSTR     lpCmdLine,
-    int       nShowCmd
-)
+int main(int argc, char* args[])
 {
-    OutputDebugStringA("Test");
-    while (true);
+    auto game = std::make_unique<Game>();
+
+    game->Initialize(Game::WindowWidth, Game::WindowHeight);
+
+    while (game->IsRunning())
+    {
+        game->ProcessInput();
+        game->Update();
+        game->Render();
+    }
+
+    game->Destroy();
 
     return 0;
 }
