@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "TransformComponent.h"
 #include <iostream>
 
 EntityManager manager;
@@ -46,12 +47,16 @@ void Game::Initialize(int width, int height)
 		std::cerr << "Error creating a renderer.\n";
 	}
 
+	LoadLevel(0);
+
 	isRunning = true;
 	return;
 }
 
 void Game::LoadLevel(int levelNumber)
 {
+	Entity& newEntity(manager.AddEntity("Player"));
+	newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
 }
 
 void Game::Update()
@@ -66,6 +71,7 @@ void Game::Update()
 
 	//Here call manager.Update to update entities
 	//Code here
+	manager.Update(dt);
 }
 
 void Game::ProcessInput()
@@ -108,6 +114,12 @@ void Game::Render()
 
 	//Here call manager.Render()
 	//Code goes here
+	if (manager.HasNoEntities())
+	{
+		return;
+	}
+
+	manager.Render();
 
 	SDL_RenderPresent(renderer); //Swapping buffers and present them on the screen
 }
