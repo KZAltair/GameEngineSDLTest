@@ -80,7 +80,7 @@ void Game::ProcessInput()
 
 void Game::Render()
 {
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //Set background color
 	SDL_RenderClear(renderer);
 	SDL_RenderPresent(renderer); //Swapping buffers and present them on the screen
 }
