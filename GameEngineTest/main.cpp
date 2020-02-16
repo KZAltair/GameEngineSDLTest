@@ -1,5 +1,14 @@
+#include <Windows.h>
 
-int main()
+int CALLBACK WinMain(
+    HINSTANCE hInstance,
+    HINSTANCE hPrevInstance,
+    LPSTR     lpCmdLine,
+    int       nShowCmd
+)
 {
-	return 0;
+    OutputDebugStringA("Test");
+    while (true);
+
+    return 0;
 }
