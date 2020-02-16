@@ -25,8 +25,14 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	bool isRunning;
+	float movX;
+	float movY;
+	float speed = 1.0f;
+	float ticksLastFrame = 0.0f;
 
 public:
 	static constexpr int WindowWidth = 800;
 	static constexpr int WindowHeight = 600;
+	static constexpr int FPS = 60;
+	static constexpr int FrameTarget = 1000 / FPS;
 };
