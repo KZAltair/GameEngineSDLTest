@@ -29,11 +29,11 @@ bool EntityManager::HasNoEntities()
 	return entities.size() == 0;
 }
 
-Entity& EntityManager::AddEntity(std::string entityName)
+std::unique_ptr<Entity> EntityManager::AddEntity(std::string entityName)
 {
-	auto entity = new Entity(*this, entityName);
-	entities.emplace_back(entity);
-	return *entity;
+	auto entity = std::make_unique<Entity>(*this, entityName);
+	entities.emplace_back(entity.get());
+	return entity;
 }
 
 std::vector<Entity*> EntityManager::GetEntities() const
