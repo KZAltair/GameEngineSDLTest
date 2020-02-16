@@ -24,7 +24,6 @@ public:
 	void Destroy();
 private:
 	SDL_Window* window;
-	SDL_Renderer* renderer;
 	bool isRunning;
 	glm::vec2 pos = { 100.0f, 100.0f };
 	glm::vec2 vel = { 0.0f, 0.0f };
@@ -32,6 +31,7 @@ private:
 	float ticksLastFrame = 0.0f;
 
 public:
+	static SDL_Renderer* renderer;
 	static constexpr int WindowWidth = 800;
 	static constexpr int WindowHeight = 600;
 	static constexpr int FPS = 60;
