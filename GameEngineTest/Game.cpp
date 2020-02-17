@@ -2,6 +2,7 @@
 #include "AssetManager.h"
 #include "TransformComponent.h"
 #include "SpriteComponent.h"
+#include "KeyboardControlComponent.h"
 #include <iostream>
 
 EntityManager manager;
@@ -71,6 +72,7 @@ void Game::LoadLevel(int levelNumber)
 	Entity& chopperEntity(manager.AddEntity("chopper"));
 	chopperEntity.AddComponent<TransformComponent>(240, 106, 0, 0, 32, 32, 1);
 	chopperEntity.AddComponent<SpriteComponent>("chopper-image", 2, 90, true, false);
+	chopperEntity.AddComponent<KeyboardControlComponent>("up", "right", "down", "left", "space");
 }
 
 void Game::Update()
