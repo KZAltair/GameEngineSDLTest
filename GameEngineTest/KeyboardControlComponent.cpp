@@ -37,26 +37,26 @@ void KeyboardControlComponent::Update(float dt)
 		std::string keyCode = std::to_string(Game::event.key.keysym.sym);
 		if (keyCode.compare(upKey) == 0)
 		{
-			transform->vel.y = -1.0f;
+			transform->vel.y = -10.0f;
 			transform->vel.x = 0.0f;
 			sprite->Play("UpAnimation");
 		}
 		if (keyCode.compare(rightKey) == 0)
 		{
 			transform->vel.y = 0.0f;
-			transform->vel.x = 1.0f;
+			transform->vel.x = 10.0f;
 			sprite->Play("RightAnimation");
 		}
 		if (keyCode.compare(downKey) == 0)
 		{
-			transform->vel.y = 1.0f;
+			transform->vel.y = 10.0f;
 			transform->vel.x = 0.0f;
 			sprite->Play("DownAnimation");
 		}
 		if (keyCode.compare(leftKey) == 0)
 		{
 			transform->vel.y = 0.0f;
-			transform->vel.x = -1.0f;
+			transform->vel.x = -10.0f;
 			sprite->Play("LeftAnimation");
 		}
 		if (keyCode.compare(shootKey) == 0)
