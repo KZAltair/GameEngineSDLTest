@@ -33,6 +33,7 @@ private:
 public:
 	static SDL_Renderer* renderer;
 	static AssetManager* assetManager;
+	static SDL_Event event;
 	static constexpr int WindowWidth = 800;
 	static constexpr int WindowHeight = 600;
 	static constexpr int FPS = 60;
