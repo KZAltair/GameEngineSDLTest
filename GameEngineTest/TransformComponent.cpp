@@ -22,12 +22,4 @@ void TransformComponent::Update(float dt)
 
 void TransformComponent::Render()
 {
-	SDL_Rect transformRect = {
-		(int)pos.x,
-		(int)pos.y,
-		width,
-		height
-	};
-	SDL_SetRenderDrawColor(Game::renderer, 255, 255, 0, 255);
-	SDL_RenderFillRect(Game::renderer, &transformRect);
 }

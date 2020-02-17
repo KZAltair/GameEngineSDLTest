@@ -11,6 +11,7 @@
 #pragma comment(lib, "SDL2_image.lib")
 #pragma comment(lib, "SDL2_ttf.lib")
 
+class AssetManager;
 
 class Game
 {
@@ -31,6 +32,7 @@ private:
 
 public:
 	static SDL_Renderer* renderer;
+	static AssetManager* assetManager;
 	static constexpr int WindowWidth = 800;
 	static constexpr int WindowHeight = 600;
 	static constexpr int FPS = 60;

@@ -34,10 +34,10 @@ public:
 		return *newComponent;
 	}
 
-	template <typename U>
-	U* GetComponent()
+	template <typename T>
+	T* GetComponent()
 	{
-		return static_cast<U*>(componentTypeMap[&typeid(U)]);
+		return static_cast<T*>(componentTypeMap[&typeid(T)]);
 	}
 
 private:

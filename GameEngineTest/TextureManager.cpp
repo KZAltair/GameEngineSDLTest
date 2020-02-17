@@ -3,6 +3,10 @@
 SDL_Texture* TextureManager::LoadTexture(const char* fileName)
 {
 	SDL_Surface* surface = IMG_Load(fileName);
+	if (!surface) {
+		printf("IMG_Load: %s\n", IMG_GetError());
+		// handle error
+	}
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(Game::renderer, surface);
 	SDL_FreeSurface(surface);
 	return texture;

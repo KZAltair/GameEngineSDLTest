@@ -1,8 +1,11 @@
 #include "Game.h"
+#include "AssetManager.h"
 #include "TransformComponent.h"
+#include "SpriteComponent.h"
 #include <iostream>
 
 EntityManager manager;
+AssetManager* Game::assetManager = new AssetManager(&manager);
 SDL_Renderer* Game::renderer;
 
 Game::Game()
@@ -55,8 +58,14 @@ void Game::Initialize(int width, int height)
 
 void Game::LoadLevel(int levelNumber)
 {
-	Entity& newEntity(manager.AddEntity("Player"));
+	//Here include new assets to asset manager list
+	std::string textureFilePath = "./assets/images/tank-big-right.png";
+	assetManager->AddTexture("tank-image", textureFilePath.c_str());
+
+	//Here add new entities to the entity manager
+	Entity& newEntity(manager.AddEntity("tank"));
 	newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
+	newEntity.AddComponent<SpriteComponent>("tank-image");
 }
 
 void Game::Update()
@@ -109,7 +118,7 @@ void Game::ProcessInput()
 
 void Game::Render()
 {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); //Set background color
+	SDL_SetRenderDrawColor(renderer, 120, 120, 120, 255); //Set background color
 	SDL_RenderClear(renderer);
 
 	//Here call manager.Render()
