@@ -24,7 +24,7 @@ public:
 	template <typename T, typename... TArgs>
 	T& AddComponent(TArgs&&... args)
 	{
-		//auto newComponent = std::make_unique<T>();
+		//auto newComponent = std::make_unique<T>(std::forward<TArgs>(args)...));
 		T* newComponent(new T(std::forward<TArgs>(args)...));
 		newComponent->owner = this;
 		components.emplace_back(newComponent);
